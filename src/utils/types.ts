@@ -13,3 +13,4 @@ export type TileType = {
     parent ?: TileType;}
 
 export type SpeedRate = 2 | 1 | 0.5
+export type PreferedType = 'LIGHT' | 'DARK'

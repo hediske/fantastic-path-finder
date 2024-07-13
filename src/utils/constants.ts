@@ -1,3 +1,5 @@
+import { MazeType } from "./types"
+
 export const MAX_ROWS = 39
 export const MAX_COLS = 49
 export const START_TILE_CONFIG ={
@@ -29,3 +31,19 @@ export const TILE_END_STYLE = TILE_STYLE+" bg-endColor"
 export const TILE_WALL_STYLE = TILE_STYLE+" bg-wallColor"
 export const TILE_TRAVERSED_STYLE = TILE_STYLE+" bg-traversedColor"
 export const TILE_PATH_STYLE = TILE_STYLE+" bg-pathColor"
+
+export const MAZE_TYPES : {name:string,value:MazeType}[] = [
+    {
+        name:"Binary Tree",
+        value:'BINARY_TREE'
+    },
+    {
+        name:"Recursive Division",
+        value:'RECURSIVE_DIVISION'
+    },
+    {
+        name:"No Maze",
+        value:'NONE'
+    }
+]
+

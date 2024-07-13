@@ -9,6 +9,7 @@ export default {
       colors:{
         traversedColor:"#40E0D0",
         startColor:"#FFCC11",
+        headingColor:"#222222",
         endColor:"#8A0E0E",
         wallColor:"#7D8890",
         pathColor:"E6CC00"

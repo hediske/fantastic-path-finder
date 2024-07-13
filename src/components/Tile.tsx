@@ -7,14 +7,21 @@ const Tile = ({
     isStart,
     isEnd,
     isTraversed,
-    isPath}:{
+    isPath,
+    onMouseUp,
+    onMouseEnter,
+    onMouseDown
+}:{
         row:number,
         col:number,
         isWall:boolean,
         isStart:boolean,
         isEnd:boolean,
         isTraversed:boolean,
-        isPath:boolean
+        isPath:boolean,
+        onMouseUp:() => void,
+        onMouseEnter:(row:number,col:number) => void,
+        onMouseDown:(row:number,col:number) => void
     })  => {
     let tileTypeStyle =""
     if(isStart){
@@ -38,7 +45,12 @@ const Tile = ({
 
 
         return (
-        <div  className={twMerge(tileTypeStyle,edgeStyle,borderStyle)} id={`${row}-${col}`}>
+        <div  className={twMerge(tileTypeStyle,edgeStyle,borderStyle,"no-selector")} 
+              id={`${row}-${col}`}
+              onMouseUp={onMouseUp}
+              onMouseDown={() => {onMouseDown(row,col)}}
+              onMouseEnter={() => {onMouseEnter(row,col)}}
+        >
         </div>
         )
     }

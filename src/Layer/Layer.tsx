@@ -1,10 +1,13 @@
+import { MutableRefObject } from 'react'
 import Grid from '../components/Grid'
+import Nav from '../components/Nav'
 
-const Layer = ()=> {
+const Layer = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableRefObject<Boolean>})=> {
     return (
         <section>
             <div className="containerLg">
-                <Grid/>
+                <Nav></Nav>
+                <Grid isVisualizationRunningRef={isVisualizationRunningRef}/>
             </div>
         </section>
     )
