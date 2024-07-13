@@ -52,3 +52,19 @@ export const createAndUpdateGrid = (grid: GridType , row:number, col:number,isWa
 export const isEqual = (t1:TileType,t2:TileType) =>{
     return (t1.row===t2.row && t1.col===t2.col)
 }
+export const isRowColEqual = (row:number,col:number,t1:TileType) =>{
+    return (row===t1.row && col===t1.col)
+}
+
+export const sleep = async (ms:number) =>{
+    return new Promise(resolver => setTimeout(resolver,ms))
+}
+
+export const randomNumber =(start :  number , end: number)=>{
+    start =  Math.ceil(start)
+    end =  Math.floor(end)
+    if(start>=end)
+        return -1
+    return Math.floor(Math.random()*(end-start)+start
+)
+}

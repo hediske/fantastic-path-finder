@@ -1,4 +1,4 @@
-import { MazeType } from "./types"
+import { mazeNameInterface, MazeType, speedNameInterface, SpeedRate } from "./types"
 
 export const MAX_ROWS = 39
 export const MAX_COLS = 49
@@ -32,7 +32,7 @@ export const TILE_WALL_STYLE = TILE_STYLE+" bg-wallColor"
 export const TILE_TRAVERSED_STYLE = TILE_STYLE+" bg-traversedColor"
 export const TILE_PATH_STYLE = TILE_STYLE+" bg-pathColor"
 
-export const MAZE_TYPES : {name:string,value:MazeType}[] = [
+export const MAZE_TYPES : mazeNameInterface[] = [
     {
         name:"Binary Tree",
         value:'BINARY_TREE'
@@ -47,3 +47,17 @@ export const MAZE_TYPES : {name:string,value:MazeType}[] = [
     }
 ]
 
+export const SPEEDS :speedNameInterface[]= [
+    {
+        name:"Slow",
+        value:2
+    },
+    {
+        name:"Medium",
+        value:1
+    },
+    {
+        name:"Fast",
+        value:0.5
+    }
+]

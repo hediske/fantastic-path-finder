@@ -14,3 +14,13 @@ export type TileType = {
 
 export type SpeedRate = 2 | 1 | 0.5
 export type PreferedType = 'LIGHT' | 'DARK'
+
+export interface speedNameInterface   {
+    name:string,
+    value:SpeedRate
+}
+
+export interface mazeNameInterface {
+    name:string,
+    value:MazeType
+}
