@@ -1,11 +1,21 @@
 
 import './App.css'
-
+import { PathFindingProvider } from './context/pathFindingContext';
+import { TileProvider } from './context/tileContext';
+import { SpeedProvider } from './context/speedContext';
+import Layer from './Layer/Layer.tsx'
 function App() {
 
   return (
+    
     <div className='container'>
-      <h1>Pathfinding</h1>
+      <PathFindingProvider>
+        <TileProvider>
+          <SpeedProvider>
+            <Layer></Layer>
+          </SpeedProvider>
+        </TileProvider>
+      </PathFindingProvider>
     </div>
   )
 }

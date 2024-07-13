@@ -11,3 +11,5 @@ export type TileType = {
     distance:number;
     isTraversed:boolean;
     parent ?: TileType;}
+
+export type SpeedRate = 2 | 1 | 0.5

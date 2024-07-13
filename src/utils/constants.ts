@@ -22,3 +22,10 @@ export const END_TILE_CONFIG ={
     isTraversed:false,
     parent : undefined
 }
+
+export const TILE_STYLE = "lg:w-[17px] md:w-[15px]  xs:w-[9px] w-[7px] lg:h-[17px] md:h-[15px]  xs:h-[9px] h-[7px] border-r border-t border-sky-300"
+export const TILE_START_STYLE = TILE_STYLE+" bg-startColor"
+export const TILE_END_STYLE = TILE_STYLE+" bg-endColor"
+export const TILE_WALL_STYLE = TILE_STYLE+" bg-wallColor"
+export const TILE_TRAVERSED_STYLE = TILE_STYLE+" bg-traversedColor"
+export const TILE_PATH_STYLE = TILE_STYLE+" bg-pathColor"

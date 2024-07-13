@@ -4,7 +4,7 @@ import { InitializeGrid } from "../utils/helpers";
 import { END_TILE_CONFIG, START_TILE_CONFIG } from "../utils/constants";
 
 
-interface PathFindingContextInterface {  
+export interface PathFindingContextInterface {  
     algorithm : AlgorithmType;
     setAlgorithm : (algorithm: AlgorithmType) => void;
     maze : MazeType;
