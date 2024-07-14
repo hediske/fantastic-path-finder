@@ -68,3 +68,13 @@ export const randomNumber =(start :  number , end: number)=>{
     return Math.floor(Math.random()*(end-start)+start
 )
 }
+
+export const updateTilesWallStatus = async (grid:GridType) => {
+    setTimeout(()=>{for(let row of grid){
+        for( let tile of row){
+            if(document.getElementById(`${tile.row}-${tile.col}`)?.className.includes("bg-wallColor")){
+                tile.isWall = true
+            }
+        }
+    }},grid.length*grid[0].length)
+}

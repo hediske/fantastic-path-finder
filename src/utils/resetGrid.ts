@@ -1,9 +1,12 @@
-import { MAX_COLS, MAX_ROWS } from "./constants";
-import { GridType } from "./types";
+import { MAX_COLS, MAX_ROWS, TILE_STYLE } from "./constants";
+import { isEqual } from "./helpers";
+import { GridType, TileType } from "./types";
 
 export const resetGrid = (
-    {grid} : {
+    {grid,startTile,endTile} : {
     grid:GridType ,
+    startTile:TileType,
+    endTile:TileType
 }) => {
     for (let row =0 ;row < MAX_ROWS ; row++) {
         for (let col =0 ; col<MAX_COLS;col++){
@@ -13,20 +16,21 @@ export const resetGrid = (
             tile.isTraversed=false
             tile.isPath=false
             tile.isWall = false
-            // const tileSelected = document.getElementById(`${tile.row}-${tile.col}`)
+            const tileSelected = document.getElementById(`${tile.row}-${tile.col}`)
 
-            // if(tile.row === MAX_ROWS-1){
-            //         tileSelected?.classList.add('border-b')
-            // }
-            // if(tile.col === 0){
-            //         tileSelected?.classList.add('border-l')
-            // }
-            
-            // if(!isEqual(tile,startTile!) && !isEqual(tile,endTile!)){
-            //     console.log(`${tile.row}-${tile.col}`,tileSelected?.id)
-            //     tileSelected!.className=TILE_STYLE
-            //     tileSelected!.classList.add('no-selector')
-            // }
+
+            if(!isEqual(tile,startTile!) && !isEqual(tile,endTile!)){
+                console.log(`${tile.row}-${tile.col}`,tileSelected?.id)
+                tileSelected!.className=TILE_STYLE
+                tileSelected!.classList.add('no-selector')
+            }
+            if(tile.row === MAX_ROWS-1){
+                tileSelected?.classList.add('border-b')
+        }
+            if(tile.col === 0){
+                    tileSelected?.classList.add('border-l')
+            }
+        
             grid[row][col] = tile
         }
 

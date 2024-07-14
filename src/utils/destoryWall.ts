@@ -2,7 +2,7 @@ import { SPEEDS, TILE_STYLE } from "./constants";
 import { sleep } from "./helpers";
 import { GridType, SpeedRate } from "./types";
 
-export const destroyWall =(
+export const destroyWall =async (
     grid:GridType,
     row:number,
     col:number,
@@ -13,12 +13,12 @@ export const destroyWall =(
     const d = 5
     const delay = p * SPEEDS.find(s => s.value===speed)!.value - d
     if(directionRight === 1 && grid[row][col+1]){
-        removeWall(row,col+1,delay)
+         await removeWall(row,col+1,delay)
     }
     else if(directionRight ===0 && grid[row+1][col]){
-        removeWall(row+1,col,delay)
+       await  removeWall(row+1,col,delay)
     }else{
-        removeWall(row,col,delay)
+       await  removeWall(row,col,delay)
     }
 }
 

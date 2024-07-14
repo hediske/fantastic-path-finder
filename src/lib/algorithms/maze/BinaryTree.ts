@@ -1,7 +1,7 @@
 import { MAX_COLS, MAX_ROWS, SPEEDS } from '../../../utils/constants';
 import { createWall } from '../../../utils/createWall';
 import { destroyWall } from '../../../utils/destoryWall';
-import { isRowColEqual, randomNumber, sleep } from '../../../utils/helpers';
+import { isRowColEqual, randomNumber, sleep, updateTilesWallStatus } from '../../../utils/helpers';
 import { GridType, TileType, SpeedRate } from '../../../utils/types';
 export const runBinaryTreeAlgorithm = async  (
     {
@@ -20,15 +20,7 @@ export const runBinaryTreeAlgorithm = async  (
 )=>{
     createWall(startTile,endTile,speed)
     await sleep(MAX_COLS*MAX_ROWS)
-
-    for (const row of grid){
-        for (const tile of row){
-            if(!isRowColEqual(tile.row,tile.col,startTile) && !isRowColEqual(tile.row,tile.col,endTile)){
-                tile.isWall = true
-            }
-        }
-    }
-
+    // console.log("phaze3")
     for( let row =1 ; row<MAX_ROWS ; row+=2){
         for(let col =1 ; col<MAX_COLS ; col +=2){
             if(row === MAX_ROWS-2 && col === MAX_COLS-2){
@@ -44,7 +36,7 @@ export const runBinaryTreeAlgorithm = async  (
             }
         }
     }
+    await updateTilesWallStatus(grid)
     setIsDisabled(false)
-
 }
 

@@ -13,6 +13,12 @@ export default {
         endColor:"#8A0E0E",
         wallColor:"#7D8890",
         pathColor:"E6CC00"
+      },
+      keyframes:{
+        wall:{
+          "0%":"scale(0.7)",
+          "100%":"scale(1)"
+        }
       }
     },
   },
