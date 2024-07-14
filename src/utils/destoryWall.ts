@@ -9,7 +9,7 @@ export const destroyWall =async (
     directionRight : number ,// 0 means remove the upper wall / 1 means remove the right  wall 
     speed:SpeedRate
 ) =>{
-    const p = 20
+    const p = 15
     const d = 5
     const delay = p * SPEEDS.find(s => s.value===speed)!.value - d
     if(directionRight === 1 && grid[row][col+1]){

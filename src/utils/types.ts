@@ -24,3 +24,8 @@ export interface mazeNameInterface {
     name:string,
     value:MazeType
 }
+
+export interface algorithmsNameInterface {
+    name:string,
+    value:AlgorithmType
+}
