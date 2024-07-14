@@ -1,3 +1,4 @@
+import { PriorityQueue } from './HeapClass';
 export type AlgorithmType = 'DIJKSTRA' | 'A_STAR' | 'BFS' | 'DFS'; 
 export type MazeType = 'BINARY_TREE'| 'NONE' | "RECURSIVE_DIVISION";
 export type GridType = TileType[][];
@@ -29,3 +30,9 @@ export interface algorithmsNameInterface {
     name:string,
     value:AlgorithmType
 }
+
+export interface PriorityQueueValue<T> {
+    value: T,
+    priority : number
+}
+export type PriorityQueueType = "Min" | "Max"

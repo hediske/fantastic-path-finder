@@ -2,17 +2,18 @@ import { ChangeEvent, useState } from 'react';
 import { usePathProvider } from '../hooks/usePathFinding';
 import { useSpeed } from '../hooks/useSpeed';
 import { useTile } from '../hooks/useTile';
-import { AlgorithmType, MazeType, SpeedRate } from '../utils/types';
+import { AlgorithmType, MazeType, PriorityQueueType, SpeedRate } from '../utils/types';
 import Select from './Select';
 import { ALGORITHM_TYPES, MAZE_TYPES, SPEEDS } from '../utils/constants';
 import { resetGrid } from '../utils/resetGrid';
 import { runMazeAlgorithm } from '../utils/runMazeAlgorithm';
 import PlayButton from './PlayButton';
+import { PriorityQueue } from '../utils/HeapClass';
 const Nav = () => {
     // const {  } = useMode();
     const {speedRate ,setSpeedRate } = useSpeed();
     const {algorithm,setAlgorithm,maze,setMaze,grid,setGrid,isGraphVisualized,setIsGraphVisualized} = usePathProvider();
-    const {startTile,setStartTile,endTile,setEndTile} = useTile();
+    const {startTile,endTile} = useTile();
     const [disabled,setDisabled] = useState(false);
     
     
@@ -46,8 +47,17 @@ const Nav = () => {
     }
 
     const handleSpeedChange = (speed:SpeedRate)=>{
-        console.error(speed)
         setSpeedRate(speed)
+        const heap = new PriorityQueue<string>('Max' as PriorityQueueType)
+        heap.push({value:"hedi",priority:4})
+        heap.push({value:"yassine",priority:8})
+        heap.push({value:"alaa",priority:9})
+        heap.push({value:"khraa",priority:7})
+        heap.updatePriority("yassine",15)
+        heap.removeElement("alaa")
+        while (!heap.isEmpty()) {
+            console.log(heap.pop());
+        }
     }
 
     return (
