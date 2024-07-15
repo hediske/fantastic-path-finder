@@ -6,7 +6,7 @@ const Layer = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableR
     return (
         <section>
             <div className="containerLg">
-                <Nav></Nav>
+                <Nav isVisualizationRunningRef={isVisualizationRunningRef}></Nav>
                 <Grid isVisualizationRunningRef={isVisualizationRunningRef}/>
             </div>
         </section>

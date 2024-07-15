@@ -80,3 +80,6 @@ export const ALGORITHM_TYPES :algorithmsNameInterface[]= [
         value:'DFS'
     }
 ]
+
+export const SPEED  = 6
+export const EXTENDED_SPEED  = 30

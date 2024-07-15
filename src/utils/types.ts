@@ -36,3 +36,6 @@ export interface PriorityQueueValue<T> {
     priority : number
 }
 export type PriorityQueueType = "Min" | "Max"
+
+export interface Coordinates  {
+    row:number, col:number}

@@ -1,16 +1,18 @@
-import { ChangeEvent, useState } from 'react';
+import {  MutableRefObject, useState } from 'react';
 import { usePathProvider } from '../hooks/usePathFinding';
 import { useSpeed } from '../hooks/useSpeed';
 import { useTile } from '../hooks/useTile';
 import { AlgorithmType, MazeType, PriorityQueueType, SpeedRate } from '../utils/types';
 import Select from './Select';
-import { ALGORITHM_TYPES, MAZE_TYPES, SPEEDS } from '../utils/constants';
+import { ALGORITHM_TYPES, EXTENDED_SPEED, MAZE_TYPES, SPEED, SPEEDS } from '../utils/constants';
 import { resetGrid } from '../utils/resetGrid';
 import { runMazeAlgorithm } from '../utils/runMazeAlgorithm';
 import PlayButton from './PlayButton';
 import { PriorityQueue } from '../utils/HeapClass';
 import { runPathFindingAlgorithm } from '../utils/runPathFindingAlgorithm';
-const Nav = () => {
+import { setAnimatePath } from '../utils/setAnimatePath';
+import { clearGrid } from '../utils/clearGrid';
+const Nav = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableRefObject<Boolean>}) => {
     // const {  } = useMode();
     const {speedRate ,setSpeedRate } = useSpeed();
     const {algorithm,setAlgorithm,maze,setMaze,grid,setGrid,isGraphVisualized,setIsGraphVisualized} = usePathProvider();
@@ -32,15 +34,25 @@ const Nav = () => {
 
     }
 
-    const handleRunVisualizer = async () => {
+    const handleRunVisualizer =  () => {
         if(isGraphVisualized){
             setIsGraphVisualized(false)
-            resetGrid({grid:grid.slice(),startTile:startTile,endTile:endTile})
+            clearGrid({grid:grid.slice(),startTile:startTile,endTile:endTile})
+            isVisualizationRunningRef.current=false
+            return 
         }
         //run the algorithm
-        const tmp = runPathFindingAlgorithm({grid,startTile,endTile,speedRate,algorithm})
-        console.log(tmp)
-        setIsGraphVisualized(true)
+        const {traversedTiles,path} = runPathFindingAlgorithm({grid,startTile,endTile,algorithm})!
+        setDisabled(true)
+        isVisualizationRunningRef.current=true
+        setAnimatePath({grid,startTile,endTile,traversedTiles,path,speedRate})
+        setTimeout(()=>{
+            const newGrid = grid.slice()
+            setGrid(newGrid)
+            setIsGraphVisualized(true)
+            setDisabled(false)
+        },(SPEEDS.find(s=>s.value===speedRate)!.value * SPEED *traversedTiles.length) + SPEEDS.find(s=>s.value===speedRate)!.value * EXTENDED_SPEED *path.length)
+ 
     }
 
 
@@ -66,7 +78,7 @@ const Nav = () => {
     return (
         <section className='  border-sky-800 border-b-4'>
             <div className='containerlg flex items-center justify-center gap-5 min-w-[764px] '>
-                <h1 className='w-[300px] text-white lg:text-[20px] md:text-[18px] text-[16px] lg:leading-9 leading-6'> PathFinder App </h1>
+                <h1 className='w-1/2 text-white lg:text-[20px] md:text-[18px] text-[16px] lg:leading-9 leading-6'> PathFinder App </h1>
                 <div className='flex flex-start gap-5  items-center   lg:gap-8'>
                     <Select label='Maze Type' isDisabled={disabled} value={maze} onChange={(e)=>{handleMazeChange(e.target.value as MazeType)}} options={MAZE_TYPES} ></Select>
                     <Select label='Algorithm' isDisabled={disabled} value={algorithm} onChange={(e)=>{handleAlgorithmChange(e.target.value as AlgorithmType)}} options={ALGORITHM_TYPES} ></Select>

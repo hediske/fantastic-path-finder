@@ -12,7 +12,6 @@ export const runBFSAlgorithm = ({
     grid:GridType,
     startTile:TileType,
     endTile:TileType,
-    speedRate:SpeedRate,
 })=>{
     const base :TileType= grid[startTile.row][startTile.col]
     base.distance = 0

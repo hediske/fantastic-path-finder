@@ -1,5 +1,5 @@
 import { END_TILE_CONFIG, MAX_COLS, MAX_ROWS, START_TILE_CONFIG } from './constants';
-import { GridType, TileType } from './types';
+import { Coordinates, GridType, TileType } from './types';
 
 export const InitializeGrid = (start:TileType , end:TileType): GridType => {
     const grid:GridType = []
@@ -110,4 +110,11 @@ export const getUntraversedNeighbors = (tile:TileType,grid:GridType) => {
         }
     }
     return neighbors
+}
+
+export const getCoordinates : (tile:TileType)=>Coordinates = (tile:TileType) =>{
+    return {row:tile.row,col:tile.col}
+}
+export const getTileFromCoordinates = (coords:Coordinates,grid:GridType) =>{
+    return grid[coords.row][coords.col]!
 }

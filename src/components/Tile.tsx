@@ -28,12 +28,12 @@ const Tile = ({
         tileTypeStyle= TILE_START_STYLE
     }else if(isEnd){
         tileTypeStyle = TILE_END_STYLE
+    }else if(isPath){
+        tileTypeStyle = TILE_PATH_STYLE
     }else if(isWall){
         tileTypeStyle = TILE_WALL_STYLE
     }else if(isTraversed){
         tileTypeStyle = TILE_TRAVERSED_STYLE
-    }else if(isPath){
-        tileTypeStyle = TILE_PATH_STYLE
     }else {
         tileTypeStyle=TILE_STYLE
     }
