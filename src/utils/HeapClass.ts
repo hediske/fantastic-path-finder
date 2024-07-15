@@ -28,7 +28,7 @@ export class PriorityQueue<T> {
 
 
   isEmpty() {
-    return this.size() == 0;
+    return this.size() === 0;
   }
 
 
@@ -49,6 +49,7 @@ export class PriorityQueue<T> {
 
   pop() {
     const poppedValue = this._getCorrectValue();
+    if(poppedValue === undefined) return undefined
     this._indexs.delete(poppedValue!.value);
     this._siftDown();
     return poppedValue;
@@ -56,12 +57,9 @@ export class PriorityQueue<T> {
 
 
   replace(value:PriorityQueueValue<T>) {
-    const replacedValue = this.peek();
-    this._heap[top] = value;
-    this._indexs.delete(replacedValue.value);
-    this._indexs.set(value.value, top)
-    this._siftDown();
-    return replacedValue;
+    this.pop();
+    this.push(value);
+    return this.size();
   }
 
 
@@ -103,12 +101,13 @@ export class PriorityQueue<T> {
   }
 
 
-  findOrder(value: T) {
+  contains(value: T) {
     return this._indexs.get(value);
   }
 
 
   isIgnored(index : number){
+      if(index<0 || index>=this.size()) return true
       return index  !== this._indexs.get(this._heap[index].value)
   }
 
@@ -119,12 +118,18 @@ export class PriorityQueue<T> {
   
   removeElement(value: T) {
     this._indexs.delete(value);
-    
+
   }
   private _getCorrectValue(){
     while(this.isIgnored(0)){
         this.removeFirstElement()
         this._siftDown()
+        if(this._heap.length===0){
+          return undefined
+        }
+        else {
+          this._siftDown()
+        }
     }
     return this.removeFirstElement()
 

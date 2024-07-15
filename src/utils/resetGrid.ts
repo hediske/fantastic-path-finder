@@ -20,7 +20,6 @@ export const resetGrid = (
 
 
             if(!isEqual(tile,startTile!) && !isEqual(tile,endTile!)){
-                console.log(`${tile.row}-${tile.col}`,tileSelected?.id)
                 tileSelected!.className=TILE_STYLE
                 tileSelected!.classList.add('no-selector')
             }

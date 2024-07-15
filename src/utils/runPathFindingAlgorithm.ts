@@ -1,31 +1,32 @@
+import { runBFSAlgorithm } from '../lib/algorithms/pathFinding/BFS';
 import { runDijkstraAlgorithm } from '../lib/algorithms/pathFinding/Dijkstra';
 import { AlgorithmType, GridType, TileType, SpeedRate } from './types';
-export const runPathFindingAlgorithm = async ({
+export const runPathFindingAlgorithm = ({
     grid,
     startTile,
     endTile,
-    speed,
+    speedRate,
     algorithm
     }:
     {
     grid:GridType,
     startTile:TileType,
     endTile:TileType,
-    speed:SpeedRate,
+    speedRate:SpeedRate,
     algorithm: AlgorithmType,
     }) =>{
         switch (algorithm) {
             case'DIJKSTRA': 
-                await runDijkstraAlgorithm({grid,startTile,endTile,speed})
-                break;
+                return runDijkstraAlgorithm({grid,startTile,endTile,speedRate})
             case 'A_STAR':
                 break;
             case 'BFS':
-                break;
+                return runBFSAlgorithm({grid,startTile,endTile})
             case 'DFS':
                 break;
             default:
-                break;   
+                return runBFSAlgorithm({grid,startTile,endTile})
+
         }
     }
 

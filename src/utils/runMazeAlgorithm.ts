@@ -25,7 +25,6 @@ export  const runMazeAlgorithm = async (
         speed:SpeedRate
     }) =>{
         setIsDisabled(true)
-        // console.error(maze)
         switch(maze){
             case 'NONE':
                 break;

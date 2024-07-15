@@ -20,7 +20,6 @@ export const runBinaryTreeAlgorithm = async  (
 )=>{
     createWall(startTile,endTile,speed)
     await sleep(MAX_COLS*MAX_ROWS*speed)
-    // console.log("phaze3")
     for( let row =1 ; row<MAX_ROWS ; row+=2){
         for(let col =1 ; col<MAX_COLS ; col +=2){
             if(row === MAX_ROWS-2 && col === MAX_COLS-2){

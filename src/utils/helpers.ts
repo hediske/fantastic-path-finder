@@ -80,7 +80,7 @@ export const updateTilesWallStatus = async (grid:GridType) => {
 }
 
 export const getAvailableNeighbors = (tile:TileType,grid:GridType) => {
-    const neighbors : {row:number,col:number}[] = []
+    const neighbors : TileType[] = []
     const {row,col} = tile
     const dir = [
         {row:1,col:0},{row:0,col:1},{row:-1,col:0},{row:0,col:-1}
@@ -89,7 +89,23 @@ export const getAvailableNeighbors = (tile:TileType,grid:GridType) => {
         if(row+dir[i].row<MAX_ROWS && row+dir[i].row>=0 && col+dir[i].col<MAX_COLS && col+dir[i].col>=0){
             const tile = grid[row+dir[i].row][col+dir[i].col]
             if(!tile.isWall){
-                neighbors.push({row:tile.row,col:tile.col})
+                neighbors.push(tile)
+            }
+        }
+    }
+    return neighbors
+}
+export const getUntraversedNeighbors = (tile:TileType,grid:GridType) => {
+    const neighbors : TileType[] = []
+    const {row,col} = tile
+    const dir = [
+        {row:1,col:0},{row:0,col:1},{row:-1,col:0},{row:0,col:-1}
+    ]
+    for (let i=0 ; i<4 ; i++){
+        if(row+dir[i].row<MAX_ROWS && row+dir[i].row>=0 && col+dir[i].col<MAX_COLS && col+dir[i].col>=0){
+            const tile = grid[row+dir[i].row][col+dir[i].col]
+            if(!tile.isTraversed){
+                neighbors.push(tile)
             }
         }
     }

@@ -9,6 +9,7 @@ import { resetGrid } from '../utils/resetGrid';
 import { runMazeAlgorithm } from '../utils/runMazeAlgorithm';
 import PlayButton from './PlayButton';
 import { PriorityQueue } from '../utils/HeapClass';
+import { runPathFindingAlgorithm } from '../utils/runPathFindingAlgorithm';
 const Nav = () => {
     // const {  } = useMode();
     const {speedRate ,setSpeedRate } = useSpeed();
@@ -18,10 +19,9 @@ const Nav = () => {
     
     
     const handleMazeChange =(mazeType:MazeType) => {
-        console.error(mazeType)
+        resetGrid({grid:grid,startTile:startTile,endTile:endTile})
         if(mazeType === 'NONE'){
             setMaze(mazeType)
-            resetGrid({grid:grid,startTile:startTile,endTile:endTile})
             return;
         }
         setMaze(mazeType)
@@ -32,30 +32,33 @@ const Nav = () => {
 
     }
 
-    const handleRunVisualizer = () => {
+    const handleRunVisualizer = async () => {
         if(isGraphVisualized){
             setIsGraphVisualized(false)
             resetGrid({grid:grid.slice(),startTile:startTile,endTile:endTile})
         }
         //run the algorithm
+        const tmp = runPathFindingAlgorithm({grid,startTile,endTile,speedRate,algorithm})
+        console.log(tmp)
+        setIsGraphVisualized(true)
     }
 
 
     const handleAlgorithmChange =(algoType:AlgorithmType) => {
-        console.error(algoType)
         setAlgorithm(algoType)
     }
 
     const handleSpeedChange = (speed:SpeedRate)=>{
         setSpeedRate(speed)
         const heap = new PriorityQueue<string>('Max' as PriorityQueueType)
-        heap.push({value:"hedi",priority:4})
-        heap.push({value:"yassine",priority:8})
-        heap.push({value:"alaa",priority:9})
-        heap.push({value:"khraa",priority:7})
-        heap.updatePriority("yassine",15)
-        heap.removeElement("alaa")
-        while (!heap.isEmpty()) {
+        heap.push({value:"low",priority:4})
+        heap.push({value:"very low",priority:1})
+        heap.push({value:"mid",priority:8})
+        heap.push({value:"high",priority:9})
+        heap.push({value:"very high",priority:7})
+        heap.updatePriority("very high",15)
+        heap.removeElement("very low")
+        while (!heap.isEmpty() ) {
             console.log(heap.pop());
         }
     }
