@@ -1,4 +1,3 @@
-import { PriorityQueue } from './HeapClass';
 export type AlgorithmType = 'DIJKSTRA' | 'A_STAR' | 'BFS' | 'DFS'; 
 export type MazeType = 'BINARY_TREE'| 'NONE' | "RECURSIVE_DIVISION";
 export type GridType = TileType[][];

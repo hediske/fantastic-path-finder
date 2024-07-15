@@ -2,7 +2,7 @@ import {  MutableRefObject, useState } from 'react';
 import { usePathProvider } from '../hooks/usePathFinding';
 import { useSpeed } from '../hooks/useSpeed';
 import { useTile } from '../hooks/useTile';
-import { AlgorithmType, MazeType, PriorityQueueType, SpeedRate } from '../utils/types';
+import { AlgorithmType, MazeType, SpeedRate } from '../utils/types';
 import Select from './Select';
 import { ALGORITHM_TYPES, EXTENDED_SPEED, MAZE_TYPES, SPEED, SPEEDS } from '../utils/constants';
 import { resetGrid } from '../utils/resetGrid';
@@ -62,17 +62,6 @@ const Nav = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableRef
 
     const handleSpeedChange = (speed:SpeedRate)=>{
         setSpeedRate(speed)
-        const heap = new PriorityQueue<string>('Max' as PriorityQueueType)
-        heap.push({value:"low",priority:4})
-        heap.push({value:"very low",priority:1})
-        heap.push({value:"mid",priority:8})
-        heap.push({value:"high",priority:9})
-        heap.push({value:"very high",priority:7})
-        heap.updatePriority("very high",15)
-        heap.removeElement("very low")
-        while (!heap.isEmpty() ) {
-            console.log(heap.pop());
-        }
     }
 
     return (

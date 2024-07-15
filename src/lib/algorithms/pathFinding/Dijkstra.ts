@@ -1,7 +1,7 @@
-import { SPEEDS } from '../../../utils/constants';
-import { getCoordinates, getTileFromCoordinates, getUntraversedNeighbors, isEqual, isRowColEqual } from '../../../utils/helpers';
-import { GridType, TileType, SpeedRate, Coordinates } from '../../../utils/types';
+import { getCoordinates, getTileFromCoordinates, getUntraversedNeighbors, isEqual } from '../../../utils/helpers';
+import { GridType, TileType, Coordinates } from '../../../utils/types';
 import { PriorityQueue } from '../../../utils/HeapClass';
+import { WiAlien } from 'react-icons/wi';
 
 export const runDijkstraAlgorithm = ({
         grid,
@@ -19,27 +19,34 @@ export const runDijkstraAlgorithm = ({
     base.isTraversed = true
     const waitlist  :PriorityQueue<Coordinates> = new PriorityQueue('Min')
     waitlist.push({value:getCoordinates(base),priority:0})
-    while(!waitlist.isEmpty){
+    let  a ;
+    while(!waitlist.isEmpty()){
         const coords = waitlist.pop()
-        if(coords){
+        if(coords !== undefined){          
             const currentTile = getTileFromCoordinates(coords.value,grid)
             if(currentTile.isWall) continue
             if(currentTile.distance === Infinity) break
-            
             currentTile.isTraversed = true
             traversedTiles.push(currentTile)
             if(isEqual(currentTile,endTile)) break
-            
             const untraversedNeighbors = getUntraversedNeighbors(currentTile,grid)
             for (let i =0 ; i < untraversedNeighbors.length; i++) {
+                untraversedNeighbors.filter(neighbor => neighbor.isWall === false)
                 if(currentTile.distance + 1 < untraversedNeighbors[i].distance){
                     untraversedNeighbors[i].distance = currentTile.distance + 1
                     untraversedNeighbors[i].parent = currentTile
-                    waitlist.updatePriority(getCoordinates(untraversedNeighbors[i]),untraversedNeighbors[i].distance)  
+                    const coordsNeighbor = getCoordinates(untraversedNeighbors[i])
+                    const distanceNeighbor = untraversedNeighbors[i].distance
+                    if(!waitlist.contains(coordsNeighbor)) 
+                        waitlist.push({value:coordsNeighbor,priority:distanceNeighbor})
+                    else{
+                        waitlist.updatePriority(getCoordinates(untraversedNeighbors[i]),untraversedNeighbors[i].distance)  
+                    }
                 }
             }
         }
     }
+    console.log(a)
 
     const path =[]
     let tile = grid[endTile.row][endTile.col]!

@@ -102,7 +102,7 @@ export class PriorityQueue<T> {
 
 
   contains(value: T) {
-    return this._indexs.get(value);
+    return this._indexs.has(value);
   }
 
 
