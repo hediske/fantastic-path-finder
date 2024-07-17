@@ -27,9 +27,9 @@ export const runAStarAlgorithm = ({
     base.isTraversed = true;
     const comparator = (a:PriorityQueueValue<Coordinates,AStarCostInterface>,b : PriorityQueueValue<Coordinates,AStarCostInterface>) => {
         if(a.priority.fonctionCost! === b.priority.fonctionCost!){
-            return a.priority.distance! < b.priority.distance!
+            return a.priority.distance! > b.priority.distance!
         }   
-        return a.priority.fonctionCost!>b.priority.fonctionCost!
+        return a.priority.fonctionCost!<b.priority.fonctionCost!
     }
     const untraversedTiles : PriorityQueue<Coordinates,AStarCostInterface>= new PriorityQueue(undefined,comparator);
     untraversedTiles.push({
@@ -44,7 +44,6 @@ export const runAStarAlgorithm = ({
         if(coords){
 
             const currentTile = getTileFromCoordinates(coords.value , grid);
-            console.log(currentTile)
             if(currentTile.isWall) continue
             if(currentTile.distance === Infinity) break
             currentTile.isTraversed = true
