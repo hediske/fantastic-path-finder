@@ -38,7 +38,6 @@ const Nav = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableRef
         if(isGraphVisualized){
             setIsGraphVisualized(false)
             clearGrid({grid:grid.slice(),startTile:startTile,endTile:endTile})
-            isVisualizationRunningRef.current=false
             return 
         }
         //run the algorithm
@@ -47,6 +46,7 @@ const Nav = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableRef
         isVisualizationRunningRef.current=true
         setAnimatePath({grid,startTile,endTile,traversedTiles,path,speedRate})
         setTimeout(()=>{
+            isVisualizationRunningRef.current=false
             const newGrid = grid.slice()
             setGrid(newGrid)
             setIsGraphVisualized(true)
@@ -66,6 +66,9 @@ const Nav = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableRef
 
     return (
         <section className='  border-sky-800 border-b-4'>
+            <div className='containerlg'>
+
+            </div>
             <div className='containerlg flex items-center justify-center gap-5 min-w-[764px] '>
                 <h1 className='w-1/2 text-white lg:text-[20px] md:text-[18px] text-[16px] lg:leading-9 leading-6'> PathFinder App </h1>
                 <div className='flex flex-start gap-5  items-center   lg:gap-8'>

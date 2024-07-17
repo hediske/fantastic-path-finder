@@ -4,21 +4,31 @@ const parent = (i:number) => ((i + 1) >>> 1) - 1;
 const left = (i:number) => (i << 1) + 1;
 const right = (i:number) => (i + 1) << 1;
 
-export class PriorityQueue<T> {
+export class PriorityQueue<T,V> {
 
-    private _heap: PriorityQueueValue<T>[];
+    private _heap: PriorityQueueValue<T,V>[];
     private _indexs: Map<T, number>;
-    private _comparator : (a: PriorityQueueValue<T>, b: PriorityQueueValue<T>) => boolean
+    private _comparator : (a: PriorityQueueValue<T,V>, b: PriorityQueueValue<T,V>) => boolean = (a:PriorityQueueValue<T,V>, b:PriorityQueueValue<T,V>) => a.priority > b.priority;
 
 
-  constructor(type : PriorityQueueType) {
+  constructor(type? : PriorityQueueType , comparator? : (a: PriorityQueueValue<T,V>, b: PriorityQueueValue<T,V>) => boolean) {
     this._heap = [];
     this._indexs = new Map<T, number>();
-    if(type==='Max'){
-        this._comparator = (a:PriorityQueueValue<T>, b:PriorityQueueValue<T>) => a.priority > b.priority;
-    }else{
-        this._comparator = (a:PriorityQueueValue<T>, b:PriorityQueueValue<T>) => a.priority < b.priority;
+    if(type)
+    {
+      if(type==='Max'){
+          this._comparator = (a:PriorityQueueValue<T,V>, b:PriorityQueueValue<T,V>) => a.priority > b.priority;
+        }
+      else{
+          this._comparator = (a:PriorityQueueValue<T,V>, b:PriorityQueueValue<T,V>) => a.priority < b.priority;
+        }
+      return;
     }
+
+    if(comparator){
+      this._comparator = comparator;
+    }
+
   }
 
 
@@ -37,7 +47,7 @@ export class PriorityQueue<T> {
   }
 
 
-  push(...values :PriorityQueueValue<T>[]) {
+  push(...values :PriorityQueueValue<T,V>[]) {
     values.forEach(value => {
       this._heap.push(value);
       this._indexs.set(value.value, this.size() - 1);
@@ -56,7 +66,7 @@ export class PriorityQueue<T> {
   }
 
 
-  replace(value:PriorityQueueValue<T>) {
+  replace(value:PriorityQueueValue<T,V>) {
     this.pop();
     this.push(value);
     return this.size();
@@ -112,7 +122,7 @@ export class PriorityQueue<T> {
   }
 
 
-  updatePriority(value: T, priority: number) {
+  updatePriority(value: T, priority: V) {
     this.push({ value, priority });
   }
   

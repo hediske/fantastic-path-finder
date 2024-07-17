@@ -18,7 +18,6 @@ export const setAnimatePath = async ({
     speedRate:SpeedRate
 }) =>{
     for(let i=0;i<traversedTiles.length;i++){
-        console.log("loool")
         const traversed = traversedTiles[i]
         const delay =  i * SPEED *  SPEEDS.find(s=>s.value===speedRate)!.value
         setTimeout(()=>{

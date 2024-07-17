@@ -1,7 +1,6 @@
 import { getCoordinates, getTileFromCoordinates, getUntraversedNeighbors, isEqual } from '../../../utils/helpers';
 import { GridType, TileType, Coordinates } from '../../../utils/types';
 import { PriorityQueue } from '../../../utils/HeapClass';
-import { WiAlien } from 'react-icons/wi';
 
 export const runDijkstraAlgorithm = ({
         grid,
@@ -17,9 +16,9 @@ export const runDijkstraAlgorithm = ({
     const base = grid[startTile.row][startTile.col]
     base.distance = 0
     base.isTraversed = true
-    const waitlist  :PriorityQueue<Coordinates> = new PriorityQueue('Min')
+    const waitlist  :PriorityQueue<Coordinates,number> = new PriorityQueue('Min')
     waitlist.push({value:getCoordinates(base),priority:0})
-    let  a ;
+
     while(!waitlist.isEmpty()){
         const coords = waitlist.pop()
         if(coords !== undefined){          
@@ -30,8 +29,8 @@ export const runDijkstraAlgorithm = ({
             traversedTiles.push(currentTile)
             if(isEqual(currentTile,endTile)) break
             const untraversedNeighbors = getUntraversedNeighbors(currentTile,grid)
+            untraversedNeighbors.filter(neighbor => neighbor.isWall === false)
             for (let i =0 ; i < untraversedNeighbors.length; i++) {
-                untraversedNeighbors.filter(neighbor => neighbor.isWall === false)
                 if(currentTile.distance + 1 < untraversedNeighbors[i].distance){
                     untraversedNeighbors[i].distance = currentTile.distance + 1
                     untraversedNeighbors[i].parent = currentTile
@@ -46,7 +45,6 @@ export const runDijkstraAlgorithm = ({
             }
         }
     }
-    console.log(a)
 
     const path =[]
     let tile = grid[endTile.row][endTile.col]!

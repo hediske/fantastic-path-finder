@@ -1,3 +1,4 @@
+import { runAStarAlgorithm } from '../lib/algorithms/pathFinding/Astar';
 import { runBFSAlgorithm } from '../lib/algorithms/pathFinding/BFS';
 import { runDFSAlgorithm } from '../lib/algorithms/pathFinding/DFS';
 import { runDijkstraAlgorithm } from '../lib/algorithms/pathFinding/Dijkstra';
@@ -19,7 +20,7 @@ export const runPathFindingAlgorithm = ({
                 return runDijkstraAlgorithm({grid,startTile,endTile})
                 return null
             case 'A_STAR':
-                return null
+                return runAStarAlgorithm({grid,startTile,endTile})
                 break;
             case 'BFS':
                 return runBFSAlgorithm({grid,startTile,endTile})

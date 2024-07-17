@@ -30,9 +30,9 @@ export interface algorithmsNameInterface {
     value:AlgorithmType
 }
 
-export interface PriorityQueueValue<T> {
+export interface PriorityQueueValue<T,V> {
     value: T,
-    priority : number
+    priority : V
 }
 export type PriorityQueueType = "Min" | "Max"
 
