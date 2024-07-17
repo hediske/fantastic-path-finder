@@ -2,7 +2,7 @@ import { runAStarAlgorithm } from '../lib/algorithms/pathFinding/Astar';
 import { runBFSAlgorithm } from '../lib/algorithms/pathFinding/BFS';
 import { runDFSAlgorithm } from '../lib/algorithms/pathFinding/DFS';
 import { runDijkstraAlgorithm } from '../lib/algorithms/pathFinding/Dijkstra';
-import { AlgorithmType, GridType, TileType, SpeedRate } from './types';
+import { AlgorithmType, GridType, TileType } from './types';
 export const runPathFindingAlgorithm = ({
     grid,
     startTile,

@@ -45,7 +45,7 @@ const Nav = ({isVisualizationRunningRef} : {isVisualizationRunningRef:MutableRef
         setDisabled(true)
         setRunDisabled(true)
         isVisualizationRunningRef.current=true
-        setAnimatePath({grid,startTile,endTile,traversedTiles,path,speedRate})
+        setAnimatePath({startTile,endTile,traversedTiles,path,speedRate})
         setTimeout(()=>{
             isVisualizationRunningRef.current=false
             const newGrid = grid.slice()

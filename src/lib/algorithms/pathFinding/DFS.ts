@@ -1,6 +1,6 @@
 import { getUntraversedNeighbors, isEqual } from '../../../utils/helpers';
 import { isInQueue } from '../../../utils/isInQueue';
-import { GridType, TileType, SpeedRate } from '../../../utils/types';
+import { GridType, TileType } from '../../../utils/types';
 
 export const runDFSAlgorithm = ({
     grid,

@@ -1,16 +1,14 @@
 import { EXTENDED_SPEED, SPEED, SPEEDS, TILE_PATH_STYLE, TILE_TRAVERSED_STYLE } from "./constants";
-import { isEqual, sleep } from "./helpers";
-import { GridType, SpeedRate, TileType } from "./types";
+import { isEqual } from "./helpers";
+import {  SpeedRate, TileType } from "./types";
 
 export const setAnimatePath = async ({
-    grid,
     startTile,
     endTile,
     traversedTiles,
     path,
     speedRate}:
 {   
-    grid:GridType,
     startTile:TileType,
     endTile:TileType,
     traversedTiles:TileType[],

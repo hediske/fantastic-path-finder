@@ -1,7 +1,7 @@
-import { MAX_COLS, MAX_ROWS, SPEEDS } from '../../../utils/constants';
+import { MAX_COLS, MAX_ROWS } from '../../../utils/constants';
 import { createWall } from '../../../utils/createWall';
 import { destroyWall } from '../../../utils/destoryWall';
-import { isRowColEqual, randomNumber, sleep, updateTilesWallStatus } from '../../../utils/helpers';
+import { randomNumber, sleep, updateTilesWallStatus } from '../../../utils/helpers';
 import { GridType, TileType, SpeedRate } from '../../../utils/types';
 export const runBinaryTreeAlgorithm = async  (
     {
