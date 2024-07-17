@@ -11,7 +11,7 @@ function App() {
   const isVisualizationRunningRef  = useRef<Boolean>(false)
   return (
     
-    <div className='container'>
+    <div className='container dark:bg-[#1f1f1f] bg-white'>
       <PathFindingProvider>
         <TileProvider>
           <SpeedProvider>

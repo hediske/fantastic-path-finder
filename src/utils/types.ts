@@ -13,7 +13,7 @@ export type TileType = {
     parent ?: TileType;}
 
 export type SpeedRate = 2 | 1 | 0.5
-export type PreferedType = 'LIGHT' | 'DARK'
+export type PreferedType = 'dark' | 'light'
 
 export interface speedNameInterface   {
     name:string,

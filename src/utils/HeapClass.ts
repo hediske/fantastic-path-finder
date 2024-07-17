@@ -6,8 +6,8 @@ const right = (i:number) => (i + 1) << 1;
 
 export class PriorityQueue<T,V> {
 
-    private _heap: PriorityQueueValue<T,V>[];
-    private _indexs: Map<T, number>;
+    _heap: PriorityQueueValue<T,V>[];
+    _indexs: Map<T, number>;
     private _comparator : (a: PriorityQueueValue<T,V>, b: PriorityQueueValue<T,V>) => boolean = (a:PriorityQueueValue<T,V>, b:PriorityQueueValue<T,V>) => a.priority > b.priority;
 
 

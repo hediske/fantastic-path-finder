@@ -23,6 +23,7 @@ export const runDijkstraAlgorithm = ({
         const coords = waitlist.pop()
         if(coords !== undefined){          
             const currentTile = getTileFromCoordinates(coords.value,grid)
+            console.log("selected ------",currentTile)
             if(currentTile.isWall) continue
             if(currentTile.distance === Infinity) break
             currentTile.isTraversed = true
@@ -41,6 +42,7 @@ export const runDijkstraAlgorithm = ({
                     else{
                         waitlist.updatePriority(getCoordinates(untraversedNeighbors[i]),untraversedNeighbors[i].distance)  
                     }
+                    console.log(untraversedNeighbors[i])
                 }
             }
         }

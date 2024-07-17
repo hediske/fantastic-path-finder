@@ -10,8 +10,8 @@ const PlayButton = ({
     isGraphVisualized:boolean
     isDisabled:boolean
 })=>{
-    return <button className="w-11 h-inherit rounded-full flex items-center justify-center h-11  bg-[#5d5d5d]" onClick={handleRunVisualizer} disabled={isDisabled}>
-        {!isGraphVisualized ? <CiRedo size={30} color="white"></CiRedo> : <BsFillPlayFill color="#e4d3d3"  size={30}/> }
+    return <button className="w-11 h-inherit rounded-full flex items-center justify-center h-11  dark:bg-[#5d5d5d] bg-[#a19f3c]" onClick={handleRunVisualizer} disabled={isDisabled}>
+        {isGraphVisualized ?    <CiRedo size={30} color="white"></CiRedo> : <BsFillPlayFill color="#e4d3d3"  size={30}/> }
     </button>
 }
 export default PlayButton
