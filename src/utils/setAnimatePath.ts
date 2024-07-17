@@ -22,7 +22,7 @@ export const setAnimatePath = async ({
         const delay =  i * SPEED *  SPEEDS.find(s=>s.value===speedRate)!.value
         setTimeout(()=>{
             if(!isEqual(traversed,startTile) && !isEqual(traversed,endTile)){
-                document.getElementById(`${traversed.row}-${traversed.col}`)!.className = `${TILE_TRAVERSED_STYLE} no-selector animate-traversed`
+                document.getElementById(`${traversed.row}-${traversed.col}`)!.className = `${TILE_TRAVERSED_STYLE} no-selector dark:animate-traversedDark animate-traversed`
             }
 
         },delay)

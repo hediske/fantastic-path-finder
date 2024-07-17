@@ -10,11 +10,18 @@ export default {
     extend: {
       colors:{
         traversedColor:"#E4E4E4",
-        startColor:"#FFCC11",
+        startColor:"#9FC011",
         headingColor:"#222222",
         endColor:"#8A0E0E",
-        wallColor:"#7D8890",
-        pathColor:"#D08B07"
+        wallColor:"#3C3C3C",
+        pathColor:"#D08B07",
+
+        traversedColorDark:"#A58080",
+        startColorDark:"#FFCC11",
+        headingColorDark:"#222222",
+        endColorDark:"#8A0E0E",
+        wallColorDark:"#EDE1E1  ",
+        pathColorDark:"#D08B07"
       },
       keyframes:{
         wall:{
@@ -36,6 +43,23 @@ export default {
           "100%":{
             transform:"scale(1)",
             backgroundColor:"#E4E4E4"
+          }
+        },
+        traversedDark:{
+          "0%":{
+            transform:"scale(0.3)",
+            backgroundColor:"#ff00ff80",
+            borderRadius:"50%"
+          },
+          "50%":{
+            backgroundColor:"#3b82f6bf",
+          },
+          "75%":{
+            transform:"scale(1.3)",
+            backgroundColor:"#ff00ffbf"},
+          "100%":{
+            transform:"scale(1)",
+            backgroundColor:"#A58080"
           }
         },
         path:{
@@ -61,7 +85,8 @@ export default {
       animation:{
         path:"path 0.5s cubic-bezier(0, 0, 0.2,1) ",
         traversed:"traversed 1.5s cubic-bezier(0, 0, 0.2,1)",
-        wall:"wall 0.3s cubic-bezier(0.4, 0, 0.2,1)"
+        wall:"wall  0.3s cubic-bezier(0.4, 0, 0.2,1)",
+        traversedDark:"traversedDark 1.5s cubic-bezier(0, 0, 0.2,1)",
       }
     },
   },
