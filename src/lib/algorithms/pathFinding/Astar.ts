@@ -39,6 +39,7 @@ export const runAStarAlgorithm = ({
             fonctionCost: base.distance + heuristicCost[base.row][base.col],
         }
     })
+    console.time("executionTime");
     while(!untraversedTiles.isEmpty()){
         const coords = untraversedTiles.pop()
         if(coords){
@@ -84,6 +85,7 @@ export const runAStarAlgorithm = ({
         path.unshift(tile)
         tile = tile.parent!
     }
+    console.timeEnd("executionTime");
     return {path,traversedTiles}
     
 

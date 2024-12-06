@@ -11,7 +11,7 @@ export const runDFSAlgorithm = ({
     startTile:TileType,
     endTile:TileType,
 })=>{
-
+    console.time("executionTime");
     const traversedTiles =[]
     const base = grid[startTile.row][startTile.col]
     base.distance = 0
@@ -45,7 +45,7 @@ export const runDFSAlgorithm = ({
         path.unshift(tile)
         tile = tile.parent!
     }
-
+    console.timeEnd("executionTime");
     return {
         traversedTiles,
         path}

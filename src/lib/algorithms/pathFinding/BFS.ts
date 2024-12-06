@@ -18,6 +18,7 @@ export const runBFSAlgorithm = ({
     base.isTraversed = true
     const traversedTiles = []
     const UntraversedTiles : TileType[] = [base]
+    console.time("executionTime");
     while(UntraversedTiles.length){
         const tile = UntraversedTiles.shift()!;
         if(tile.isWall) continue
@@ -49,6 +50,7 @@ export const runBFSAlgorithm = ({
         tile = tile.parent!
 
     }
+    console.timeEnd("executionTime");
     return { traversedTiles,path  }
 
 }

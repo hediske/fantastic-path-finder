@@ -18,7 +18,8 @@ export const runDijkstraAlgorithm = ({
     base.isTraversed = true
     const waitlist  :PriorityQueue<Coordinates,number> = new PriorityQueue('Min')
     waitlist.push({value:getCoordinates(base),priority:0})
-
+    
+    console.time("executionTime");
     while(!waitlist.isEmpty()){
         const coords = waitlist.pop()
         if(coords !== undefined){          
@@ -53,6 +54,7 @@ export const runDijkstraAlgorithm = ({
         path.unshift(tile)
         tile = tile.parent!
     }
+    console.timeEnd("executionTime");
     return {path,traversedTiles}
     
 }
